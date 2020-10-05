@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.HomePage;
+import pages.OfficesPage;
 import pages.PartnersPage;
 
 import java.util.concurrent.TimeUnit;
@@ -51,7 +52,13 @@ public class ValtechTest {
 
     @Test
     public void offices() {
-
+        HomePage homePage = new HomePage(driver);
+        homePage.openMenu();
+        homePage.selectOfficesItem();
+        OfficesPage officesPage = new OfficesPage(driver);
+        assertEquals(officesPage.checkPage(), "Offices");
+        officesPage.clickOnUnitedKingdom();
+        officesPage.printUKOffices();
     }
 
     @AfterMethod

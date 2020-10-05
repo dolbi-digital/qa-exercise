@@ -25,4 +25,10 @@ public class HomePage {
         new WebDriverWait(driver, 7).until(ExpectedConditions.elementToBeClickable(partnersItem));
         partnersItem.click();
     }
+
+    public void selectOfficesItem() {
+        WebElement officesItem = driver.findElement(By.cssSelector(".site-nav__menu__secondary > li:nth-child(3) > a"));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(officesItem));
+        officesItem.click();
+    }
 }
