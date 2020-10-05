@@ -8,7 +8,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.PartnersPage;
+
 import java.util.concurrent.TimeUnit;
+
+import static org.testng.AssertJUnit.assertEquals;
 
 public class ValtechTest {
     private WebDriver driver;
@@ -35,7 +40,13 @@ public class ValtechTest {
 
     @Test
     public void partners() {
-
+        HomePage homePage = new HomePage(driver);
+        homePage.openMenu();
+        homePage.selectPartnersItem();
+        PartnersPage partnersPage = new PartnersPage(driver);
+        assertEquals(partnersPage.checkPage(), "Partners");
+        partnersPage.clickOnOurPartnersButton();
+        partnersPage.printPartners();
     }
 
     @Test
