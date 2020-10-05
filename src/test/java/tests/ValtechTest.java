@@ -12,6 +12,7 @@ import pages.HomePage;
 import pages.OfficesPage;
 import pages.PartnersPage;
 
+import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.AssertJUnit.assertEquals;
@@ -21,7 +22,13 @@ public class ValtechTest {
 
     @Parameters({"browser"})
     @BeforeMethod
-    public void setUp(String browser) {
+    public void setUp(String browser) throws MalformedURLException {
+        //to run on docker
+//        DesiredCapabilities capabilities = new DesiredCapabilities();
+//        capabilities.setCapability("browserName", browser);
+//        driver = new RemoteWebDriver(new URL("http://192.168.99.100:4444/wd/hub"), capabilities);
+
+        //to run locally
         if(browser.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver.exe");
             driver=new ChromeDriver();
